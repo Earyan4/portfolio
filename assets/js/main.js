@@ -320,25 +320,9 @@
     });
   }
 
-  /* Premium spider cursor — SVG follow with zero lerp lag */
-  const cursor = select("#spiderCursor");
-  if (cursor && isFinePointer && !prefersReducedMotion) {
+  /* Red pointer cursor with web (native CSS — normal cursor feel) */
+  if (isFinePointer && !prefersReducedMotion) {
     document.body.classList.add("has-spider-cursor");
-    const hotspotX = 22;
-    const hotspotY = 30;
-    window.addEventListener(
-      "mousemove",
-      (e) => {
-        cursor.style.transform =
-          "translate3d(" + (e.clientX - hotspotX) + "px," + (e.clientY - hotspotY) + "px,0)";
-      },
-      { passive: true }
-    );
-    window.addEventListener("mousedown", () => document.body.classList.add("cursor-pressed"));
-    window.addEventListener("mouseup", () => document.body.classList.remove("cursor-pressed"));
-    document.addEventListener("mouseleave", () => {
-      cursor.style.transform = "translate3d(-9999px,-9999px,0)";
-    });
   }
 
   /* Web canvas */
@@ -406,6 +390,15 @@
     tipClose?.addEventListener("click", () => {
       tip.hidden = true;
       sessionStorage.setItem("webTipDismissed", "1");
+    });
+  }
+
+  /* Hero entrance after first paint */
+  if (!prefersReducedMotion) {
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        document.body.classList.add("fx-ready");
+      });
     });
   }
 

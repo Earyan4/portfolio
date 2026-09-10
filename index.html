@@ -34,12 +34,9 @@
   <link href="assets/css/style.css" rel="stylesheet">
 </head>
 
-<body class="fx-ready">
+<body>
 
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
-  <div class="spider-cursor" id="spiderCursor" aria-hidden="true">
-    <img src="assets/img/cursor-webshooter.svg" alt="" width="40" height="40" draggable="false">
-  </div>
   <canvas id="webCanvas" aria-hidden="true"></canvas>
   <div id="fxToast" class="fx-toast" role="status" aria-live="polite"></div>
   <div class="web-tip" id="webTip" hidden>
@@ -74,32 +71,28 @@
   <section id="hero">
     <div class="hero-web-bg" aria-hidden="true">
       <svg class="decor-web" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-        <g fill="none" stroke="currentColor" stroke-width="0.7">
+        <g fill="none" stroke="currentColor" stroke-width="0.45">
           <circle cx="100" cy="100" r="30"/>
           <circle cx="100" cy="100" r="55"/>
           <circle cx="100" cy="100" r="80"/>
           <path d="M100 20v160M20 100h160M35 35l130 130M165 35L35 165"/>
         </g>
       </svg>
-      <img class="hero-mask-float" src="assets/img/spidey-mask.png?v=4" alt="" width="160" height="160">
     </div>
 
     <div class="container-fluid hero-layout">
       <div class="hero-copy">
-        <p class="hero-eyebrow">
-          <img class="mask-mini" src="assets/img/spidey-mask.png?v=4" alt="" width="28" height="28">
-          Editor · Developer
-        </p>
+        <p class="hero-eyebrow">Editor · Developer</p>
         <h1 class="hero-name" id="heroName" title="Triple-click me">Aryan Goud</h1>
         <p class="hero-typed-line">
-          <span class="typed" data-typed-items="Video Editor, ISE Student, Web Builder, Django Projects"></span>
+          <span class="typed" data-typed-items="Video Editor, ISE · NIE Mysore, Web Developer, Django"></span>
         </p>
         <p class="hero-tagline">
-          I study Information Science at NIE Mysore and edit videos for social media. I build web stuff when I’m not cutting clips.
+          Information Science student at NIE Mysore — building web products and editing video for brands and social.
         </p>
         <div class="hero-cta">
-          <a href="#portfolio" class="btn btn-spider scrollto">See my work</a>
-          <a href="#contact" class="btn btn-ghost scrollto">Say hello</a>
+          <a href="#portfolio" class="btn btn-spider scrollto">View work</a>
+          <a href="#contact" class="btn btn-ghost scrollto">Contact</a>
         </div>
         <div class="social-links">
           <a href="https://www.instagram.com/__.arnx_/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="bx bxl-instagram"></i></a>
@@ -108,9 +101,15 @@
         </div>
       </div>
 
-      <div class="hero-figure" aria-hidden="true">
-        <div class="web-strand"></div>
-        <img class="hanging-spidey" src="assets/img/spidey-hang.png?v=7" alt="Spider-Man hanging upside down" width="480" height="640">
+      <div class="hero-figure">
+        <img
+          class="hero-portrait"
+          src="assets/img/profile.webp"
+          alt="Aryan Goud"
+          width="640"
+          height="800"
+          fetchpriority="high"
+        >
       </div>
     </div>
   </section>
@@ -480,7 +479,7 @@
             <div class="contact-info">
               <div class="info-block">
                 <i class="bi bi-geo-alt"></i>
-                <div><h4>Location</h4><p>Vijayanagara 3rd Stage, Mysore</p></div>
+                <div><h4>Location</h4><p>Mysore, India</p></div>
               </div>
               <div class="info-block">
                 <i class="bi bi-envelope"></i>

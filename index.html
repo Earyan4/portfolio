@@ -1,23 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>E. Aryan Goud | Code & Cuts</title>
-  <meta name="description" content="E. Aryan Goud — ISE student at NIE Mysore and video editor. Dual craft: web development and cinematic cuts.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>E. Aryan Goud | Editor · Developer</title>
+  <meta name="description" content="E. Aryan Goud — video editor and Information Science student at NIE Mysore. Web, Django, and social edits.">
   <meta name="keywords" content="E. Aryan Goud, video editor, web development, Django, NIE Mysore, portfolio">
   <meta name="author" content="E. Aryan Goud">
-
-  <meta property="og:title" content="Aryan Goud">
-  <meta property="og:description" content="Equal dual identity: building on the web and crafting edits that hit.">
+  <meta property="og:title" content="E. Aryan Goud | Editor · Developer">
+  <meta property="og:description" content="Video editor and ISE student. Web projects and social edits.">
   <meta property="og:type" content="website">
 
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%0a0e1a'/%3E%3Cpath d='M16 4 L28 28 H4 Z' fill='none' stroke='%23e10600' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%23e10600'/%3E%3C/svg%3E">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("ag-theme");
+        if (t === "dark" || t === "light") document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23f6f3ee'/%3E%3Cellipse cx='16' cy='16' rx='10' ry='12' fill='%231a1a1a'/%3E%3Cpath d='M6 16h20M16 6v20' stroke='%23c41e3a' stroke-width='1.2'/%3E%3Ccircle cx='11' cy='14' r='2' fill='%23f6f3ee'/%3E%3Ccircle cx='21' cy='14' r='2' fill='%23f6f3ee'/%3E%3C/svg%3E">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -36,58 +44,95 @@
   <canvas id="webCanvas" aria-hidden="true"></canvas>
   <div id="fxToast" class="fx-toast" role="status" aria-live="polite"></div>
   <div class="web-tip" id="webTip" hidden>
-    <span>Click anywhere to shoot a web · Triple-click the name for Spider-Sense</span>
+    <span>Click to shoot a web · Triple-click the name for a surprise</span>
     <button type="button" id="webTipClose" aria-label="Dismiss tip">&times;</button>
   </div>
   <button type="button" class="fx-audio-toggle" id="audioToggle" aria-pressed="false" title="Toggle web sound">
     <i class="bi bi-volume-mute"></i>
   </button>
 
-  <button type="button" class="mobile-nav-toggle d-lg-none" aria-label="Open navigation">
-    <i class="bi bi-list"></i>
-  </button>
+  <nav id="dock" class="bottom-dock" aria-label="Primary">
+    <a href="#hero" class="dock-item scrollto active" data-section="hero">
+      <i class="bx bx-home"></i><span>Home</span>
+    </a>
+    <a href="#about" class="dock-item scrollto" data-section="about">
+      <i class="bx bx-user"></i><span>About</span>
+    </a>
+    <a href="#portfolio" class="dock-item scrollto" data-section="portfolio">
+      <i class="bx bx-film"></i><span>Work</span>
+    </a>
+    <a href="#resume" class="dock-item scrollto" data-section="resume">
+      <i class="bx bx-file-blank"></i><span>Resume</span>
+    </a>
+    <a href="#contact" class="dock-item scrollto" data-section="contact">
+      <i class="bx bx-envelope"></i><span>Contact</span>
+    </a>
+    <button type="button" class="dock-item dock-theme" id="themeToggle" aria-label="Toggle light and dark theme">
+      <i class="bi bi-moon-stars" id="themeIcon"></i><span>Theme</span>
+    </button>
+  </nav>
 
-  <header id="header" class="d-flex flex-column justify-content-center">
-    <nav id="navbar" class="navbar nav-menu" aria-label="Primary">
-      <ul>
-        <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
-        <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
-        <li><a href="#skills" class="nav-link scrollto"><i class="bx bx-code-alt"></i> <span>Skills</span></a></li>
-        <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
-        <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-film"></i> <span>Portfolio</span></a></li>
-        <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
-      </ul>
-    </nav>
-  </header>
+  <section id="hero">
+    <div class="hero-web-bg" aria-hidden="true">
+      <svg class="decor-web" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <g fill="none" stroke="currentColor" stroke-width="0.7">
+          <circle cx="100" cy="100" r="30"/>
+          <circle cx="100" cy="100" r="55"/>
+          <circle cx="100" cy="100" r="80"/>
+          <path d="M100 20v160M20 100h160M35 35l130 130M165 35L35 165"/>
+        </g>
+      </svg>
+    </div>
 
-  <section id="hero" class="d-flex flex-column justify-content-center">
-    <div class="hero-web" aria-hidden="true"></div>
-    <div class="hero-vignette" aria-hidden="true"></div>
-    <div class="hero-grain" aria-hidden="true"></div>
-
-    <div class="container hero-content">
-      <p class="hero-eyebrow">Code &amp; Cuts</p>
-      <h1 class="hero-name" id="heroName" title="Triple-click me">Aryan Goud</h1>
-      <p class="hero-typed-line">
-        <span class="typed" data-typed-items="Video Editor, ISE Student &amp; Web Builder, Django Developer, Storyteller in Frames"></span>
-      </p>
-      <p class="hero-tagline">
-        Two crafts. One city skyline energy — building efficient systems on the web, and cutting footage that grabs attention.
-      </p>
-      <div class="hero-cta">
-        <a href="#portfolio" class="btn btn-spider scrollto">View Work</a>
-        <a href="#contact" class="btn btn-ghost scrollto">Get in Touch</a>
+    <div class="container-fluid hero-layout">
+      <div class="hero-copy">
+        <p class="hero-eyebrow">
+          <svg class="mask-mini" viewBox="0 0 40 48" aria-hidden="true"><ellipse cx="20" cy="24" rx="16" ry="20" fill="currentColor"/><path d="M4 24h32M20 6v36" stroke="var(--bg)" stroke-width="1.5"/><circle cx="12" cy="20" r="3.5" fill="var(--bg)"/><circle cx="28" cy="20" r="3.5" fill="var(--bg)"/></svg>
+          Editor · Developer
+        </p>
+        <h1 class="hero-name" id="heroName" title="Triple-click me">E. Aryan Goud</h1>
+        <p class="hero-typed-line">
+          <span class="typed" data-typed-items="Video Editor, ISE Student, Web Builder, Django Projects"></span>
+        </p>
+        <p class="hero-tagline">
+          I study Information Science at NIE Mysore and edit videos for social media. I build web stuff when I’m not cutting clips.
+        </p>
+        <div class="hero-cta">
+          <a href="#portfolio" class="btn btn-spider scrollto">See my work</a>
+          <a href="#contact" class="btn btn-ghost scrollto">Say hello</a>
+        </div>
+        <div class="social-links">
+          <a href="https://www.instagram.com/__.arnx_/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="bx bxl-instagram"></i></a>
+          <a href="https://www.linkedin.com/in/earyangoud" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="bx bxl-linkedin"></i></a>
+          <a href="mailto:e.aryangoud22@gmail.com" aria-label="Email"><i class="bx bx-envelope"></i></a>
+        </div>
       </div>
-      <div class="social-links">
-        <a href="https://www.instagram.com/__.arnx_/" class="instagram" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-          <i class="bx bxl-instagram"></i>
-        </a>
-        <a href="https://www.linkedin.com/in/earyangoud" class="linkedin" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-          <i class="bx bxl-linkedin"></i>
-        </a>
-        <a href="mailto:e.aryangoud22@gmail.com" class="email-link" aria-label="Email">
-          <i class="bx bx-envelope"></i>
-        </a>
+
+      <div class="hero-silhouette" aria-hidden="true">
+        <svg class="hanging-spidey" viewBox="0 0 240 460" xmlns="http://www.w3.org/2000/svg">
+          <line class="web-line" x1="120" y1="0" x2="120" y2="42" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          <g class="spidey-body">
+            <!-- feet / legs toward web (upside down) -->
+            <path d="M104 42c-2 18-6 36-8 52" fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round"/>
+            <path d="M136 42c2 18 6 36 8 52" fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round"/>
+            <ellipse cx="96" cy="40" rx="12" ry="8" fill="currentColor"/>
+            <ellipse cx="144" cy="40" rx="12" ry="8" fill="currentColor"/>
+            <!-- torso -->
+            <path d="M98 95c-8 40-10 85 22 120 32-35 30-80 22-120z" fill="currentColor"/>
+            <ellipse cx="120" cy="118" rx="36" ry="48" fill="currentColor"/>
+            <!-- arms out -->
+            <path d="M90 130c-28 28-48 70-52 110" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round"/>
+            <path d="M150 130c28 28 48 70 52 110" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round"/>
+            <circle cx="36" cy="244" r="11" fill="currentColor"/>
+            <circle cx="204" cy="244" r="11" fill="currentColor"/>
+            <!-- mask / head at bottom -->
+            <ellipse cx="120" cy="280" rx="42" ry="50" fill="currentColor"/>
+            <ellipse cx="102" cy="272" rx="11" ry="8" fill="var(--bg)"/>
+            <ellipse cx="138" cy="272" rx="11" ry="8" fill="var(--bg)"/>
+            <path d="M82 286h76" stroke="var(--accent)" stroke-width="2" opacity="0.85"/>
+            <path d="M100 308c8 10 32 10 40 0" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.5"/>
+          </g>
+        </svg>
       </div>
     </div>
   </section>
@@ -95,95 +140,97 @@
   <main id="main">
 
     <section id="stats" class="stats">
-      <div class="container">
-        <div class="row g-4">
-          <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="0">
+      <div class="container site-wrap">
+        <div class="row g-3 g-lg-4">
+          <div class="col-6 col-md-3" data-aos="zoom-in">
             <div class="stat-card">
               <span class="stat-number purecounter" data-purecounter-start="0" data-purecounter-end="25" data-purecounter-duration="2">0</span><span class="stat-suffix">+</span>
-              <p class="stat-label">Video Edits</p>
+              <p class="stat-label">Video edits</p>
             </div>
           </div>
-          <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="100">
+          <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="80">
             <div class="stat-card">
               <span class="stat-number purecounter" data-purecounter-start="0" data-purecounter-end="3" data-purecounter-duration="1.5">0</span><span class="stat-suffix">rd</span>
               <p class="stat-label">Year · ISE</p>
             </div>
           </div>
-          <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="200">
+          <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="160">
             <div class="stat-card">
               <span class="stat-number purecounter" data-purecounter-start="0" data-purecounter-end="1" data-purecounter-duration="1">0</span>
-              <p class="stat-label">Django Project</p>
+              <p class="stat-label">Django project</p>
             </div>
           </div>
-          <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="300">
+          <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="240">
             <div class="stat-card">
               <span class="stat-number purecounter" data-purecounter-start="0" data-purecounter-end="4" data-purecounter-duration="1.5">0</span>
-              <p class="stat-label">Years Creating</p>
+              <p class="stat-label">Years editing</p>
             </div>
           </div>
         </div>
 
-        <div class="missions" data-aos="fade-up" data-aos-delay="150">
-          <h3 class="missions-title">Missions Unlocked</h3>
+        <div class="finds" data-aos="fade-up">
+          <h3 class="finds-title">Stuff you’ve found</h3>
           <div class="mission-badges" id="missionBadges">
-            <span class="mission-badge" data-mission="arrive">New Arrival</span>
-            <span class="mission-badge locked" data-mission="sense">Spider-Sense</span>
-            <span class="mission-badge locked" data-mission="thwip">Web Shooter</span>
-            <span class="mission-badge locked" data-mission="reels">Reel Scout</span>
-            <span class="mission-badge locked" data-mission="secret">Secret Swing</span>
+            <span class="mission-badge" data-mission="arrive">Here</span>
+            <span class="mission-badge locked" data-mission="sense">Sense</span>
+            <span class="mission-badge locked" data-mission="thwip">Webs</span>
+            <span class="mission-badge locked" data-mission="reels">Reels</span>
+            <span class="mission-badge locked" data-mission="secret">Secret</span>
           </div>
         </div>
       </div>
     </section>
 
     <section id="about" class="about">
-      <div class="container" data-aos="fade-up">
+      <div class="container site-wrap" data-aos="fade-up">
         <div class="section-title">
           <h2>About</h2>
-          <p>With great curiosity comes great craft — code by day, cuts by night.</p>
+          <p>Quick intro — who I am and what I do.</p>
         </div>
 
-        <div class="row align-items-center g-5">
-          <div class="col-lg-4" data-aos="fade-right" data-aos-delay="100">
-            <div class="about-avatar identity-flip" id="identityFlip" role="button" tabindex="0" aria-label="Flip dual identity">
+        <div class="row align-items-center g-4 g-xl-5">
+          <div class="col-lg-4" data-aos="fade-right">
+            <div class="about-avatar identity-flip" id="identityFlip" role="button" tabindex="0" aria-label="Flip photo">
               <div class="avatar-ring"></div>
               <div class="flip-inner">
                 <div class="flip-face flip-front">
                   <div class="avatar-monogram" aria-hidden="true">AG</div>
-                  <img src="assets/img/profile.webp" alt="E. Aryan Goud" class="avatar-photo">
-                  <span class="flip-label">Code</span>
+                  <img src="assets/img/profile.webp" alt="E. Aryan Goud" class="avatar-photo" width="320" height="320">
+                  <span class="flip-label">Photo</span>
                 </div>
                 <div class="flip-face flip-back">
-                  <div class="avatar-monogram cuts" aria-hidden="true">CUTS</div>
-                  <span class="flip-label">Editor Mode</span>
+                  <div class="avatar-monogram cuts" aria-hidden="true">
+                    <svg viewBox="0 0 40 48" width="72" height="86" aria-hidden="true"><ellipse cx="20" cy="24" rx="16" ry="20" fill="currentColor"/><path d="M4 24h32" stroke="var(--bg)" stroke-width="1.5"/><circle cx="12" cy="20" r="3.5" fill="var(--bg)"/><circle cx="28" cy="20" r="3.5" fill="var(--bg)"/></svg>
+                  </div>
+                  <span class="flip-label">Editor</span>
                 </div>
               </div>
-              <p class="flip-hint">Tap to flip identity</p>
+              <p class="flip-hint">Tap to flip</p>
             </div>
           </div>
-          <div class="col-lg-8 pt-5 pt-lg-0" data-aos="fade-left" data-aos-delay="200">
-            <h3 class="about-heading">Builder &amp; Editor</h3>
+          <div class="col-lg-8 pt-4 pt-lg-0" data-aos="fade-left">
+            <h3 class="about-heading">Student by day, editor by night</h3>
             <p>
-              I’m E. Aryan Goud, a B.E. Information Science student at The National Institute of Engineering, Mysore.
-              I’m passionate about building efficient backend systems and exploring web development — while also working as a creative video editor.
+              I’m E. Aryan Goud. I’m in my 3rd year of B.E. Information Science at The National Institute of Engineering, Mysore.
+              I like backend and web work, and I also edit a lot of videos.
             </p>
             <p>
-              I’ve published 25+ successful edits on social platforms, turning raw footage into polished stories that capture attention.
-              I keep looking for ways to combine technical skill with visual craft.
+              I’ve put out 25+ edits on social media — clean cuts, decent pacing, stuff people actually watch.
+              Still learning. Still shipping.
             </p>
-            <div class="row about-facts mt-4">
+            <div class="row about-facts mt-3">
               <div class="col-md-6">
                 <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>B.E. Information Science (in progress)</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Foundation:</strong> <span>Diploma in Computer Science</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>Raichur / Mysore, Karnataka</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>B.E. Information Science</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Earlier:</strong> <span>Diploma in Computer Science</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>From:</strong> <span>Raichur / Mysore, Karnataka</span></li>
                 </ul>
               </div>
               <div class="col-md-6">
                 <ul>
                   <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span><a href="mailto:e.aryangoud22@gmail.com">e.aryangoud22@gmail.com</a></span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Focus:</strong> <span>Web · Backend · Video</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Campus:</strong> <span>NIE Mysore</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Does:</strong> <span>Web · Video</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>College:</strong> <span>NIE Mysore</span></li>
                 </ul>
               </div>
             </div>
@@ -193,69 +240,52 @@
     </section>
 
     <section id="skills" class="skills">
-      <div class="container" data-aos="fade-up">
+      <div class="container site-wrap" data-aos="fade-up">
         <div class="section-title">
           <h2>Skills</h2>
-          <p>Two tracks. Same discipline.</p>
+          <p>What I use for web and editing.</p>
         </div>
 
         <div class="row g-4 skills-content">
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-lg-6" data-aos="fade-up">
             <div class="skill-track">
-              <h3><i class="bi bi-code-slash"></i> Web / Code</h3>
+              <h3><i class="bi bi-code-slash"></i> Web</h3>
               <div class="progress">
-                <span class="skill">HTML <i class="val">Core</i></span>
-                <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
+                <span class="skill">HTML <i class="val">Solid</i></span>
+                <div class="progress-bar-wrap"><div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div></div>
               </div>
               <div class="progress">
-                <span class="skill">CSS <i class="val">Core</i></span>
-                <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
+                <span class="skill">CSS <i class="val">Solid</i></span>
+                <div class="progress-bar-wrap"><div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div></div>
               </div>
               <div class="progress">
-                <span class="skill">JavaScript <i class="val">Growing</i></span>
-                <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
+                <span class="skill">JavaScript <i class="val">Getting there</i></span>
+                <div class="progress-bar-wrap"><div class="progress-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div></div>
               </div>
               <div class="progress">
-                <span class="skill">Django <i class="val">Project</i></span>
-                <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
+                <span class="skill">Django <i class="val">Project work</i></span>
+                <div class="progress-bar-wrap"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div></div>
               </div>
             </div>
           </div>
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
             <div class="skill-track">
-              <h3><i class="bi bi-camera-reels"></i> Edit / Visual</h3>
+              <h3><i class="bi bi-camera-reels"></i> Editing</h3>
               <div class="progress">
                 <span class="skill">CapCut <i class="val">Strong</i></span>
-                <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
+                <div class="progress-bar-wrap"><div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div></div>
               </div>
               <div class="progress">
                 <span class="skill">VN <i class="val">Strong</i></span>
-                <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
+                <div class="progress-bar-wrap"><div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div></div>
               </div>
               <div class="progress">
                 <span class="skill">Adobe Premiere Pro <i class="val">Learning</i></span>
-                <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
+                <div class="progress-bar-wrap"><div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div></div>
               </div>
               <div class="progress">
-                <span class="skill">Lightroom <i class="val">Solid</i></span>
-                <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
+                <span class="skill">Lightroom <i class="val">Okay</i></span>
+                <div class="progress-bar-wrap"><div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div></div>
               </div>
             </div>
           </div>
@@ -264,20 +294,20 @@
     </section>
 
     <section id="resume" class="resume">
-      <div class="container" data-aos="fade-up">
+      <div class="container site-wrap" data-aos="fade-up">
         <div class="section-title">
           <h2>Resume</h2>
-          <p>Path so far — school, code, and the timeline.</p>
+          <p>School and work so far.</p>
         </div>
 
-        <div class="row">
+        <div class="row g-4">
           <div class="col-lg-6">
-            <h3 class="resume-title" data-aos="fade-right">Summary</h3>
+            <h3 class="resume-title">Summary</h3>
             <div class="resume-item" data-aos="fade-up">
               <h4>E. Aryan Goud</h4>
               <p>
-                Dual-craft creator: Information Science student focused on web and backend systems,
-                and a video editor with 25+ published social edits. Driven, honest, and ready for the next challenge.
+                ISE student who builds web apps and edits videos. 25+ social edits out in the wild.
+                Straight talk, hard work, open to real projects.
               </p>
               <ul>
                 <li><a href="mailto:e.aryangoud22@gmail.com">e.aryangoud22@gmail.com</a></li>
@@ -285,39 +315,38 @@
               </ul>
             </div>
 
-            <h3 class="resume-title" data-aos="fade-right">Education</h3>
-            <div class="resume-item" data-aos="fade-up" data-aos-delay="50">
+            <h3 class="resume-title">Education</h3>
+            <div class="resume-item" data-aos="fade-up">
               <h4>B.E. Information Science</h4>
               <h5>2024 – 2027</h5>
-              <p><em>The National Institute of Engineering, Mysore · 3rd Year</em></p>
-              <p>Building on a Diploma in Computer Science with a focus on web systems and backend thinking.</p>
+              <p><em>NIE Mysore · 3rd year</em></p>
+              <p>Came in after a Diploma in Computer Science.</p>
             </div>
-            <div class="resume-item" data-aos="fade-up" data-aos-delay="100">
+            <div class="resume-item" data-aos="fade-up">
               <h4>Diploma · Computer Science</h4>
               <h5>2020 – 2023</h5>
-              <p><em>Pre-degree / diploma pathway into engineering</em></p>
             </div>
-            <div class="resume-item" data-aos="fade-up" data-aos-delay="150">
-              <h4>Schooling</h4>
+            <div class="resume-item" data-aos="fade-up">
+              <h4>School</h4>
               <h5>Through 2020</h5>
-              <p><em>Shri Konda Sarawathamma Hanumanthaiah School (SKSH), Raichur</em></p>
+              <p><em>SKSH School, Raichur</em></p>
             </div>
           </div>
 
           <div class="col-lg-6">
-            <h3 class="resume-title" data-aos="fade-left">Experience</h3>
-            <div class="resume-item" data-aos="fade-up" data-aos-delay="50">
-              <h4>Django Web Application</h4>
-              <h5>Academic Internship · 5th Semester</h5>
+            <h3 class="resume-title">Experience</h3>
+            <div class="resume-item" data-aos="fade-up">
+              <h4>Django web app</h4>
+              <h5>College internship · 5th semester</h5>
               <ul>
-                <li>Built a web application with Django as a team internship highlight — hands-on backend and full-stack delivery.</li>
+                <li>Team project: built a web app with Django — real backend work, not just slides.</li>
               </ul>
             </div>
-            <div class="resume-item" data-aos="fade-up" data-aos-delay="100">
-              <h4>Video Editing</h4>
+            <div class="resume-item" data-aos="fade-up">
+              <h4>Video editing</h4>
               <h5>Ongoing</h5>
               <ul>
-                <li>25+ successful edits published on social platforms — pacing, polish, and story that earn engagement.</li>
+                <li>25+ edits on social platforms — events, reels, and short stories.</li>
               </ul>
             </div>
           </div>
@@ -326,129 +355,76 @@
     </section>
 
     <section id="portfolio" class="portfolio">
-      <div class="container" data-aos="fade-up">
+      <div class="container site-wrap" data-aos="fade-up">
         <div class="section-title">
-          <h2>Portfolio</h2>
-          <p>Selected cuts — tap to play. One story at a time.</p>
+          <h2>Work</h2>
+          <p>Some edits. Tap play on any of them.</p>
         </div>
 
         <div class="portfolio-grid">
-          <article class="portfolio-item" data-aos="zoom-in" data-aos-delay="0">
+          <article class="portfolio-item" data-aos="zoom-in">
             <div class="video-frame">
-              <video controls preload="metadata" playsinline
-                src="https://res.cloudinary.com/dezaikgyt/video/upload/v1755502224/expoedit_mrsspr.mp4"
-                aria-label="Expo Edit video"></video>
+              <video controls preload="metadata" playsinline src="https://res.cloudinary.com/dezaikgyt/video/upload/v1755502224/expoedit_mrsspr.mp4" aria-label="Expo Edit"></video>
             </div>
-            <div class="portfolio-meta">
-              <h3>Expo Edit</h3>
-              <p>Event · Social cut</p>
-            </div>
+            <div class="portfolio-meta"><h3>Expo Edit</h3><p>Event</p></div>
           </article>
-
-          <article class="portfolio-item" data-aos="zoom-in" data-aos-delay="50">
+          <article class="portfolio-item" data-aos="zoom-in">
             <div class="video-frame">
-              <video controls preload="metadata" playsinline
-                src="https://res.cloudinary.com/dezaikgyt/video/upload/v1755496987/new_one_ph9f3e.mp4"
-                aria-label="Fresh Cut video"></video>
+              <video controls preload="metadata" playsinline src="https://res.cloudinary.com/dezaikgyt/video/upload/v1755496987/new_one_ph9f3e.mp4" aria-label="Fresh Cut"></video>
             </div>
-            <div class="portfolio-meta">
-              <h3>Fresh Cut</h3>
-              <p>Social reel</p>
-            </div>
+            <div class="portfolio-meta"><h3>Fresh Cut</h3><p>Reel</p></div>
           </article>
-
-          <article class="portfolio-item" data-aos="zoom-in" data-aos-delay="100">
+          <article class="portfolio-item" data-aos="zoom-in">
             <div class="video-frame">
-              <video controls preload="metadata" playsinline
-                src="https://res.cloudinary.com/dezaikgyt/video/upload/v1775234958/lv_0_20260130114021_hosvno.mp4"
-                aria-label="Motion Reel video"></video>
+              <video controls preload="metadata" playsinline src="https://res.cloudinary.com/dezaikgyt/video/upload/v1775234958/lv_0_20260130114021_hosvno.mp4" aria-label="Motion Reel"></video>
             </div>
-            <div class="portfolio-meta">
-              <h3>Motion Reel</h3>
-              <p>Short-form</p>
-            </div>
+            <div class="portfolio-meta"><h3>Motion Reel</h3><p>Short</p></div>
           </article>
-
-          <article class="portfolio-item" data-aos="zoom-in" data-aos-delay="0">
+          <article class="portfolio-item" data-aos="zoom-in">
             <div class="video-frame">
-              <video controls preload="metadata" playsinline
-                src="https://res.cloudinary.com/ddasgddwa/video/upload/v1756151255/final_copy_4k1_waihcu.mp4"
-                aria-label="Final Cut 4K video"></video>
+              <video controls preload="metadata" playsinline src="https://res.cloudinary.com/ddasgddwa/video/upload/v1756151255/final_copy_4k1_waihcu.mp4" aria-label="Final Cut 4K"></video>
             </div>
-            <div class="portfolio-meta">
-              <h3>Final Cut 4K</h3>
-              <p>Cinematic polish</p>
-            </div>
+            <div class="portfolio-meta"><h3>Final Cut 4K</h3><p>Polished</p></div>
           </article>
-
-          <article class="portfolio-item" data-aos="zoom-in" data-aos-delay="50">
+          <article class="portfolio-item" data-aos="zoom-in">
             <div class="video-frame">
-              <video controls preload="metadata" playsinline
-                src="https://res.cloudinary.com/dezaikgyt/video/upload/v1775235010/Arise_final_2.0_fgebev.mp4"
-                aria-label="Arise video"></video>
+              <video controls preload="metadata" playsinline src="https://res.cloudinary.com/dezaikgyt/video/upload/v1775235010/Arise_final_2.0_fgebev.mp4" aria-label="Arise"></video>
             </div>
-            <div class="portfolio-meta">
-              <h3>Arise</h3>
-              <p>Story edit</p>
-            </div>
+            <div class="portfolio-meta"><h3>Arise</h3><p>Story</p></div>
           </article>
-
-          <article class="portfolio-item" data-aos="zoom-in" data-aos-delay="100">
+          <article class="portfolio-item" data-aos="zoom-in">
             <div class="video-frame">
-              <video controls preload="metadata" playsinline
-                src="https://res.cloudinary.com/dezaikgyt/video/upload/v1775234970/lv_0_20251207144540_jtwtdi.mp4"
-                aria-label="Night Swing video"></video>
+              <video controls preload="metadata" playsinline src="https://res.cloudinary.com/dezaikgyt/video/upload/v1775234970/lv_0_20251207144540_jtwtdi.mp4" aria-label="Night Swing"></video>
             </div>
-            <div class="portfolio-meta">
-              <h3>Night Swing</h3>
-              <p>Mood cut</p>
-            </div>
+            <div class="portfolio-meta"><h3>Night Swing</h3><p>Mood</p></div>
           </article>
-
-          <article class="portfolio-item" data-aos="zoom-in" data-aos-delay="0">
+          <article class="portfolio-item" data-aos="zoom-in">
             <div class="video-frame">
-              <video controls preload="metadata" playsinline
-                src="https://res.cloudinary.com/dezaikgyt/video/upload/v1775237491/venugopala_swamy_temple_4k._1_yc4hvr.mp4"
-                aria-label="Venugopala Swamy Temple video"></video>
+              <video controls preload="metadata" playsinline src="https://res.cloudinary.com/dezaikgyt/video/upload/v1775237491/venugopala_swamy_temple_4k._1_yc4hvr.mp4" aria-label="Venugopala Temple"></video>
             </div>
-            <div class="portfolio-meta">
-              <h3>Venugopala Temple</h3>
-              <p>4K location piece</p>
-            </div>
+            <div class="portfolio-meta"><h3>Venugopala Temple</h3><p>4K</p></div>
           </article>
-
-          <article class="portfolio-item" data-aos="zoom-in" data-aos-delay="50">
+          <article class="portfolio-item" data-aos="zoom-in">
             <div class="video-frame">
-              <video controls preload="metadata" playsinline
-                src="https://res.cloudinary.com/dezaikgyt/video/upload/v1787316215/final_copy_wddje5.mp4"
-                aria-label="Final Copy video"></video>
+              <video controls preload="metadata" playsinline src="https://res.cloudinary.com/dezaikgyt/video/upload/v1787316215/final_copy_wddje5.mp4" aria-label="Final Copy"></video>
             </div>
-            <div class="portfolio-meta">
-              <h3>Final Copy</h3>
-              <p>Delivery cut</p>
-            </div>
+            <div class="portfolio-meta"><h3>Final Copy</h3><p>Delivery</p></div>
           </article>
-
-          <article class="portfolio-item" data-aos="zoom-in" data-aos-delay="100">
+          <article class="portfolio-item" data-aos="zoom-in">
             <div class="video-frame">
-              <video controls preload="metadata" playsinline
-                src="https://res.cloudinary.com/dezaikgyt/video/upload/v1775236067/Video_Project_2_quwskp.mp4"
-                aria-label="Project Two video"></video>
+              <video controls preload="metadata" playsinline src="https://res.cloudinary.com/dezaikgyt/video/upload/v1775236067/Video_Project_2_quwskp.mp4" aria-label="Project Two"></video>
             </div>
-            <div class="portfolio-meta">
-              <h3>Project Two</h3>
-              <p>Showcase edit</p>
-            </div>
+            <div class="portfolio-meta"><h3>Project Two</h3><p>Showcase</p></div>
           </article>
         </div>
       </div>
     </section>
 
     <section id="contact" class="contact">
-      <div class="container" data-aos="fade-up">
+      <div class="container site-wrap" data-aos="fade-up">
         <div class="section-title">
           <h2>Contact</h2>
-          <p>Ready when you are — drop a line.</p>
+          <p>Want to talk? Email works best.</p>
         </div>
 
         <div class="row g-4">
@@ -456,28 +432,18 @@
             <div class="contact-info">
               <div class="info-block">
                 <i class="bi bi-geo-alt"></i>
-                <div>
-                  <h4>Location</h4>
-                  <p>Vijayanagara 3rd Stage, Mysore</p>
-                </div>
+                <div><h4>Location</h4><p>Vijayanagara 3rd Stage, Mysore</p></div>
               </div>
               <div class="info-block">
                 <i class="bi bi-envelope"></i>
-                <div>
-                  <h4>Email</h4>
-                  <p><a href="mailto:e.aryangoud22@gmail.com">e.aryangoud22@gmail.com</a></p>
-                </div>
+                <div><h4>Email</h4><p><a href="mailto:e.aryangoud22@gmail.com">e.aryangoud22@gmail.com</a></p></div>
               </div>
               <div class="info-block">
                 <i class="bi bi-instagram"></i>
-                <div>
-                  <h4>Instagram</h4>
-                  <p><a href="https://www.instagram.com/__.arnx_/" target="_blank" rel="noopener noreferrer">@.arnx_</a></p>
-                </div>
+                <div><h4>Instagram</h4><p><a href="https://www.instagram.com/__.arnx_/" target="_blank" rel="noopener noreferrer">@.arnx_</a></p></div>
               </div>
             </div>
           </div>
-
           <div class="col-lg-8" data-aos="fade-left">
             <form class="contact-form" id="contactForm" novalidate>
               <div class="row g-3">
@@ -494,8 +460,8 @@
                   <textarea id="message" class="form-control" rows="6" placeholder="Your message" required></textarea>
                 </div>
                 <div class="col-12">
-                  <button type="submit" class="btn btn-spider">Send Message</button>
-                  <p class="form-note">Opens your email app with the message ready to send.</p>
+                  <button type="submit" class="btn btn-spider">Send</button>
+                  <p class="form-note">Opens your email app with this filled in.</p>
                 </div>
               </div>
             </form>
@@ -507,21 +473,19 @@
   </main>
 
   <footer id="footer">
-    <div class="container">
+    <div class="container site-wrap">
       <p class="footer-brand">E. Aryan Goud</p>
-      <p class="footer-tag">Code &amp; Cuts · Built with curiosity</p>
+      <p class="footer-tag">Editor · Developer</p>
       <div class="social-links">
         <a href="https://www.instagram.com/__.arnx_/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="bx bxl-instagram"></i></a>
         <a href="https://www.linkedin.com/in/earyangoud" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="bx bxl-linkedin"></i></a>
         <a href="mailto:e.aryangoud22@gmail.com" aria-label="Email"><i class="bx bx-envelope"></i></a>
       </div>
-      <p class="copyright">&copy; <span id="year"></span> E. Aryan Goud. All rights reserved.</p>
+      <p class="copyright">&copy; <span id="year"></span> E. Aryan Goud</p>
     </div>
   </footer>
 
-  <div id="preloader">
-    <div class="preloader-web"></div>
-  </div>
+  <div id="preloader"><div class="preloader-web"></div></div>
   <a href="#hero" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Back to top">
     <i class="bi bi-arrow-up-short"></i>
   </a>

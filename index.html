@@ -4,11 +4,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>E. Aryan Goud | Editor · Developer</title>
-  <meta name="description" content="E. Aryan Goud — video editor and Information Science student at NIE Mysore. Web, Django, and social edits.">
-  <meta name="keywords" content="E. Aryan Goud, video editor, web development, Django, NIE Mysore, portfolio">
-  <meta name="author" content="E. Aryan Goud">
-  <meta property="og:title" content="E. Aryan Goud | Editor · Developer">
+  <title>Aryan Goud | Editor · Developer</title>
+  <meta name="description" content="Aryan Goud — video editor and Information Science student at NIE Mysore. Web, Django, and social edits.">
+  <meta name="keywords" content="Aryan Goud, video editor, web development, Django, NIE Mysore, portfolio">
+  <meta name="author" content="Aryan Goud">
+  <meta property="og:title" content="Aryan Goud">
   <meta property="og:description" content="Video editor and ISE student. Web projects and social edits.">
   <meta property="og:type" content="website">
 
@@ -38,8 +38,7 @@
 
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
   <div class="spider-cursor" id="spiderCursor" aria-hidden="true">
-    <span class="cursor-ring"></span>
-    <span class="cursor-dot"></span>
+    <img src="assets/img/cursor-webshooter.svg" alt="" width="40" height="40" draggable="false">
   </div>
   <canvas id="webCanvas" aria-hidden="true"></canvas>
   <div id="fxToast" class="fx-toast" role="status" aria-live="polite"></div>
@@ -61,7 +60,7 @@
     <a href="#portfolio" class="dock-item scrollto" data-section="portfolio">
       <i class="bx bx-film"></i><span>Work</span>
     </a>
-    <a href="#resume" class="dock-item scrollto" data-section="resume">
+    <a href="#summary" class="dock-item scrollto" data-section="resume">
       <i class="bx bx-file-blank"></i><span>Resume</span>
     </a>
     <a href="#contact" class="dock-item scrollto" data-section="contact">
@@ -82,15 +81,16 @@
           <path d="M100 20v160M20 100h160M35 35l130 130M165 35L35 165"/>
         </g>
       </svg>
+      <img class="hero-mask-float" src="assets/img/spidey-mask.png?v=4" alt="" width="160" height="160">
     </div>
 
     <div class="container-fluid hero-layout">
       <div class="hero-copy">
         <p class="hero-eyebrow">
-          <svg class="mask-mini" viewBox="0 0 40 48" aria-hidden="true"><ellipse cx="20" cy="24" rx="16" ry="20" fill="currentColor"/><path d="M4 24h32M20 6v36" stroke="var(--bg)" stroke-width="1.5"/><circle cx="12" cy="20" r="3.5" fill="var(--bg)"/><circle cx="28" cy="20" r="3.5" fill="var(--bg)"/></svg>
+          <img class="mask-mini" src="assets/img/spidey-mask.png?v=4" alt="" width="28" height="28">
           Editor · Developer
         </p>
-        <h1 class="hero-name" id="heroName" title="Triple-click me">E. Aryan Goud</h1>
+        <h1 class="hero-name" id="heroName" title="Triple-click me">Aryan Goud</h1>
         <p class="hero-typed-line">
           <span class="typed" data-typed-items="Video Editor, ISE Student, Web Builder, Django Projects"></span>
         </p>
@@ -108,31 +108,9 @@
         </div>
       </div>
 
-      <div class="hero-silhouette" aria-hidden="true">
-        <svg class="hanging-spidey" viewBox="0 0 240 460" xmlns="http://www.w3.org/2000/svg">
-          <line class="web-line" x1="120" y1="0" x2="120" y2="42" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-          <g class="spidey-body">
-            <!-- feet / legs toward web (upside down) -->
-            <path d="M104 42c-2 18-6 36-8 52" fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round"/>
-            <path d="M136 42c2 18 6 36 8 52" fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round"/>
-            <ellipse cx="96" cy="40" rx="12" ry="8" fill="currentColor"/>
-            <ellipse cx="144" cy="40" rx="12" ry="8" fill="currentColor"/>
-            <!-- torso -->
-            <path d="M98 95c-8 40-10 85 22 120 32-35 30-80 22-120z" fill="currentColor"/>
-            <ellipse cx="120" cy="118" rx="36" ry="48" fill="currentColor"/>
-            <!-- arms out -->
-            <path d="M90 130c-28 28-48 70-52 110" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round"/>
-            <path d="M150 130c28 28 48 70 52 110" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round"/>
-            <circle cx="36" cy="244" r="11" fill="currentColor"/>
-            <circle cx="204" cy="244" r="11" fill="currentColor"/>
-            <!-- mask / head at bottom -->
-            <ellipse cx="120" cy="280" rx="42" ry="50" fill="currentColor"/>
-            <ellipse cx="102" cy="272" rx="11" ry="8" fill="var(--bg)"/>
-            <ellipse cx="138" cy="272" rx="11" ry="8" fill="var(--bg)"/>
-            <path d="M82 286h76" stroke="var(--accent)" stroke-width="2" opacity="0.85"/>
-            <path d="M100 308c8 10 32 10 40 0" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.5"/>
-          </g>
-        </svg>
+      <div class="hero-figure" aria-hidden="true">
+        <div class="web-strand"></div>
+        <img class="hanging-spidey" src="assets/img/spidey-hang.png?v=7" alt="Spider-Man hanging upside down" width="480" height="640">
       </div>
     </div>
   </section>
@@ -195,14 +173,12 @@
               <div class="flip-inner">
                 <div class="flip-face flip-front">
                   <div class="avatar-monogram" aria-hidden="true">AG</div>
-                  <img src="assets/img/profile.webp" alt="E. Aryan Goud" class="avatar-photo" width="320" height="320">
+                  <img src="assets/img/profile.webp" alt="Aryan Goud" class="avatar-photo" width="320" height="320">
                   <span class="flip-label">Photo</span>
                 </div>
                 <div class="flip-face flip-back">
-                  <div class="avatar-monogram cuts" aria-hidden="true">
-                    <svg viewBox="0 0 40 48" width="72" height="86" aria-hidden="true"><ellipse cx="20" cy="24" rx="16" ry="20" fill="currentColor"/><path d="M4 24h32" stroke="var(--bg)" stroke-width="1.5"/><circle cx="12" cy="20" r="3.5" fill="var(--bg)"/><circle cx="28" cy="20" r="3.5" fill="var(--bg)"/></svg>
-                  </div>
-                  <span class="flip-label">Editor</span>
+                  <img src="assets/img/spidey-mask.png?v=4" alt="" class="avatar-photo mask-face">
+                  <span class="flip-label">Suit up</span>
                 </div>
               </div>
               <p class="flip-hint">Tap to flip</p>
@@ -211,7 +187,7 @@
           <div class="col-lg-8 pt-4 pt-lg-0" data-aos="fade-left">
             <h3 class="about-heading">Student by day, editor by night</h3>
             <p>
-              I’m E. Aryan Goud. I’m in my 3rd year of B.E. Information Science at The National Institute of Engineering, Mysore.
+              I’m Aryan Goud. I’m in my 3rd year of B.E. Information Science at The National Institute of Engineering, Mysore.
               I like backend and web work, and I also edit a lot of videos.
             </p>
             <p>
@@ -293,63 +269,135 @@
       </div>
     </section>
 
-    <section id="resume" class="resume">
-      <div class="container site-wrap" data-aos="fade-up">
-        <div class="section-title">
-          <h2>Resume</h2>
-          <p>School and work so far.</p>
+    <section id="summary" class="chapter chapter-summary">
+      <div class="chapter-watermark" aria-hidden="true">
+        <span class="chapter-wm-num purecounter" data-purecounter-start="0" data-purecounter-end="1" data-purecounter-duration="1.4">0</span>
+      </div>
+      <div class="container site-wrap">
+        <div class="section-title" data-aos="fade-up">
+          <h2>Summary</h2>
+          <p>Who I am in a few lines.</p>
         </div>
 
-        <div class="row g-4">
-          <div class="col-lg-6">
-            <h3 class="resume-title">Summary</h3>
-            <div class="resume-item" data-aos="fade-up">
-              <h4>E. Aryan Goud</h4>
-              <p>
-                ISE student who builds web apps and edits videos. 25+ social edits out in the wild.
-                Straight talk, hard work, open to real projects.
-              </p>
-              <ul>
-                <li><a href="mailto:e.aryangoud22@gmail.com">e.aryangoud22@gmail.com</a></li>
-                <li>Mysore / Raichur, Karnataka</li>
-              </ul>
-            </div>
+        <div class="chapter-hero-copy" data-aos="fade-up" data-aos-delay="60">
+          <p class="chapter-name">Aryan Goud</p>
+          <p class="chapter-blurb">
+            ISE student who builds web apps and edits videos. Straight talk, hard work, open to real projects.
+          </p>
+          <p class="chapter-contact-line">
+            <a href="mailto:e.aryangoud22@gmail.com">e.aryangoud22@gmail.com</a>
+            <span aria-hidden="true">·</span>
+            Mysore / Raichur
+          </p>
+        </div>
 
-            <h3 class="resume-title">Education</h3>
-            <div class="resume-item" data-aos="fade-up">
-              <h4>B.E. Information Science</h4>
-              <h5>2024 – 2027</h5>
-              <p><em>NIE Mysore · 3rd year</em></p>
+        <div class="chapter-metrics" data-aos="fade-up" data-aos-delay="120">
+          <div class="chapter-metric">
+            <span class="chapter-metric-num">
+              <span class="purecounter" data-purecounter-start="0" data-purecounter-end="25" data-purecounter-duration="2">0</span><span class="chapter-metric-suffix">+</span>
+            </span>
+            <span class="chapter-metric-label">Video edits</span>
+          </div>
+          <div class="chapter-metric">
+            <span class="chapter-metric-num">
+              <span class="purecounter" data-purecounter-start="0" data-purecounter-end="3" data-purecounter-duration="1.4">0</span><span class="chapter-metric-suffix">rd</span>
+            </span>
+            <span class="chapter-metric-label">Year · ISE</span>
+          </div>
+          <div class="chapter-metric">
+            <span class="chapter-metric-num">
+              <span class="purecounter" data-purecounter-start="0" data-purecounter-end="4" data-purecounter-duration="1.6">0</span>
+            </span>
+            <span class="chapter-metric-label">Years editing</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education" class="chapter chapter-education">
+      <div class="chapter-watermark" aria-hidden="true">
+        <span class="chapter-wm-num purecounter" data-purecounter-start="0" data-purecounter-end="2" data-purecounter-duration="1.4">0</span>
+      </div>
+      <div class="container site-wrap">
+        <div class="section-title" data-aos="fade-up">
+          <h2>Education</h2>
+          <p>School so far.</p>
+        </div>
+
+        <div class="chapter-rail">
+          <article class="chapter-entry" data-aos="fade-up">
+            <div class="chapter-entry-when">
+              <span class="purecounter" data-purecounter-start="2018" data-purecounter-end="2024" data-purecounter-duration="1.5">2018</span>
+              <span class="chapter-dash">—</span>
+              <span class="purecounter" data-purecounter-start="2021" data-purecounter-end="2027" data-purecounter-duration="1.5">2021</span>
+            </div>
+            <div class="chapter-entry-body">
+              <h3>B.E. Information Science</h3>
+              <p class="chapter-entry-place">NIE Mysore · 3rd year</p>
               <p>Came in after a Diploma in Computer Science.</p>
             </div>
-            <div class="resume-item" data-aos="fade-up">
-              <h4>Diploma · Computer Science</h4>
-              <h5>2020 – 2023</h5>
-            </div>
-            <div class="resume-item" data-aos="fade-up">
-              <h4>School</h4>
-              <h5>Through 2020</h5>
-              <p><em>SKSH School, Raichur</em></p>
-            </div>
-          </div>
+          </article>
 
-          <div class="col-lg-6">
-            <h3 class="resume-title">Experience</h3>
-            <div class="resume-item" data-aos="fade-up">
-              <h4>Django web app</h4>
-              <h5>College internship · 5th semester</h5>
-              <ul>
-                <li>Team project: built a web app with Django — real backend work, not just slides.</li>
-              </ul>
+          <article class="chapter-entry" data-aos="fade-up" data-aos-delay="80">
+            <div class="chapter-entry-when">
+              <span class="purecounter" data-purecounter-start="2015" data-purecounter-end="2020" data-purecounter-duration="1.5">2015</span>
+              <span class="chapter-dash">—</span>
+              <span class="purecounter" data-purecounter-start="2018" data-purecounter-end="2023" data-purecounter-duration="1.5">2018</span>
             </div>
-            <div class="resume-item" data-aos="fade-up">
-              <h4>Video editing</h4>
-              <h5>Ongoing</h5>
-              <ul>
-                <li>25+ edits on social platforms — events, reels, and short stories.</li>
-              </ul>
+            <div class="chapter-entry-body">
+              <h3>Diploma · Computer Science</h3>
             </div>
-          </div>
+          </article>
+
+          <article class="chapter-entry" data-aos="fade-up" data-aos-delay="160">
+            <div class="chapter-entry-when">
+              <span class="chapter-when-note">Through</span>
+              <span class="purecounter" data-purecounter-start="2015" data-purecounter-end="2020" data-purecounter-duration="1.4">2015</span>
+            </div>
+            <div class="chapter-entry-body">
+              <h3>School</h3>
+              <p class="chapter-entry-place">SKSH School, Raichur</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="chapter chapter-experience">
+      <div class="chapter-watermark" aria-hidden="true">
+        <span class="chapter-wm-num purecounter" data-purecounter-start="0" data-purecounter-end="3" data-purecounter-duration="1.4">0</span>
+      </div>
+      <div class="container site-wrap">
+        <div class="section-title" data-aos="fade-up">
+          <h2>Experience</h2>
+          <p>Work I’ve shipped.</p>
+        </div>
+
+        <div class="chapter-rail">
+          <article class="chapter-entry" data-aos="fade-up">
+            <div class="chapter-entry-when">
+              <span class="chapter-when-note">5th sem</span>
+            </div>
+            <div class="chapter-entry-body">
+              <h3>Django web app</h3>
+              <p class="chapter-entry-place">College internship</p>
+              <p>Team project: built a web app with Django — real backend work, not just slides.</p>
+            </div>
+          </article>
+
+          <article class="chapter-entry chapter-entry-featured" data-aos="fade-up" data-aos-delay="100">
+            <div class="chapter-entry-when">
+              <span class="chapter-when-note">Ongoing</span>
+              <span class="chapter-entry-stat">
+                <span class="purecounter" data-purecounter-start="0" data-purecounter-end="25" data-purecounter-duration="2">0</span>+
+              </span>
+            </div>
+            <div class="chapter-entry-body">
+              <h3>Video editing</h3>
+              <p class="chapter-entry-place">Social platforms</p>
+              <p>Events, reels, and short stories — cuts people actually watch.</p>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -474,14 +522,14 @@
 
   <footer id="footer">
     <div class="container site-wrap">
-      <p class="footer-brand">E. Aryan Goud</p>
+      <p class="footer-brand">Aryan Goud</p>
       <p class="footer-tag">Editor · Developer</p>
       <div class="social-links">
         <a href="https://www.instagram.com/__.arnx_/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="bx bxl-instagram"></i></a>
         <a href="https://www.linkedin.com/in/earyangoud" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="bx bxl-linkedin"></i></a>
         <a href="mailto:e.aryangoud22@gmail.com" aria-label="Email"><i class="bx bx-envelope"></i></a>
       </div>
-      <p class="copyright">&copy; <span id="year"></span> E. Aryan Goud</p>
+      <p class="copyright">&copy; <span id="year"></span> Aryan Goud</p>
     </div>
   </footer>
 

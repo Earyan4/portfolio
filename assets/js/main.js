@@ -1,5 +1,5 @@
 /**
- * E. Aryan Goud — Editor · Developer
+ * Aryan Goud — Editor · Developer
  */
 (function () {
   "use strict";
@@ -59,7 +59,16 @@
 
   /* Dock / section active */
   const dockLinks = select("#dock .scrollto", true);
-  const sectionIds = ["hero", "about", "skills", "resume", "portfolio", "contact"];
+  const sectionIds = [
+    "hero",
+    "about",
+    "skills",
+    "summary",
+    "education",
+    "experience",
+    "portfolio",
+    "contact",
+  ];
 
   const setDockActive = () => {
     const position = window.scrollY + window.innerHeight * 0.35;
@@ -69,8 +78,11 @@
       if (!section) return;
       if (position >= section.offsetTop) current = id;
     });
-    /* Map skills into about for dock (no skills tab) */
+    /* Map nested sections onto dock tabs */
     if (current === "skills") current = "about";
+    if (current === "summary" || current === "education" || current === "experience") {
+      current = "resume";
+    }
     dockLinks.forEach((link) => {
       const sec = link.getAttribute("data-section");
       link.classList.toggle("active", sec === current);
@@ -221,6 +233,36 @@
     });
   }
 
+  /* Chapter sections — reveal watermark + soft scroll drift */
+  const chapters = select(".chapter", true);
+  if (chapters.length && "IntersectionObserver" in window) {
+    const chapterObs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add("is-visible");
+        });
+      },
+      { threshold: 0.2 }
+    );
+    chapters.forEach((ch) => chapterObs.observe(ch));
+
+    if (!prefersReducedMotion) {
+      const driftWatermarks = () => {
+        const mid = window.scrollY + window.innerHeight * 0.5;
+        chapters.forEach((ch) => {
+          const wm = ch.querySelector(".chapter-watermark");
+          if (!wm || !ch.classList.contains("is-visible")) return;
+          const rect = ch.getBoundingClientRect();
+          const center = window.scrollY + rect.top + rect.height * 0.5;
+          const offset = (mid - center) * 0.06;
+          wm.style.transform = `translateY(calc(-50% + ${offset}px))`;
+        });
+      };
+      onscroll(document, driftWatermarks);
+      window.addEventListener("load", driftWatermarks);
+    }
+  }
+
   /* ========== FX ========== */
   const toastEl = select("#fxToast");
   let toastTimer;
@@ -278,35 +320,24 @@
     });
   }
 
-  /* Cursor */
+  /* Premium spider cursor — SVG follow with zero lerp lag */
   const cursor = select("#spiderCursor");
   if (cursor && isFinePointer && !prefersReducedMotion) {
     document.body.classList.add("has-spider-cursor");
-    let cx = window.innerWidth / 2;
-    let cy = window.innerHeight / 2;
-    let tx = cx;
-    let ty = cy;
-    window.addEventListener("mousemove", (e) => {
-      tx = e.clientX;
-      ty = e.clientY;
-    }, { passive: true });
-    const tick = () => {
-      cx += (tx - cx) * 0.3;
-      cy += (ty - cy) * 0.3;
-      cursor.style.left = cx + "px";
-      cursor.style.top = cy + "px";
-      requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
-    document.addEventListener("mouseover", (e) => {
-      if (e.target.closest("a, button, .btn, input, textarea, video, .portfolio-item, .identity-flip, .dock-item")) {
-        document.body.classList.add("cursor-hover");
-      }
-    });
-    document.addEventListener("mouseout", (e) => {
-      if (e.target.closest("a, button, .btn, input, textarea, video, .portfolio-item, .identity-flip, .dock-item")) {
-        document.body.classList.remove("cursor-hover");
-      }
+    const hotspotX = 22;
+    const hotspotY = 30;
+    window.addEventListener(
+      "mousemove",
+      (e) => {
+        cursor.style.transform =
+          "translate3d(" + (e.clientX - hotspotX) + "px," + (e.clientY - hotspotY) + "px,0)";
+      },
+      { passive: true }
+    );
+    window.addEventListener("mousedown", () => document.body.classList.add("cursor-pressed"));
+    window.addEventListener("mouseup", () => document.body.classList.remove("cursor-pressed"));
+    document.addEventListener("mouseleave", () => {
+      cursor.style.transform = "translate3d(-9999px,-9999px,0)";
     });
   }
 

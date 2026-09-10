@@ -9,7 +9,7 @@
   <meta name="keywords" content="E. Aryan Goud, video editor, web development, Django, NIE Mysore, portfolio">
   <meta name="author" content="E. Aryan Goud">
 
-  <meta property="og:title" content="E. Aryan Goud | Code & Cuts">
+  <meta property="og:title" content="Aryan Goud">
   <meta property="og:description" content="Equal dual identity: building on the web and crafting edits that hit.">
   <meta property="og:type" content="website">
 
@@ -26,9 +26,22 @@
   <link href="assets/css/style.css" rel="stylesheet">
 </head>
 
-<body>
+<body class="fx-ready">
 
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+  <div class="spider-cursor" id="spiderCursor" aria-hidden="true">
+    <span class="cursor-ring"></span>
+    <span class="cursor-dot"></span>
+  </div>
+  <canvas id="webCanvas" aria-hidden="true"></canvas>
+  <div id="fxToast" class="fx-toast" role="status" aria-live="polite"></div>
+  <div class="web-tip" id="webTip" hidden>
+    <span>Click anywhere to shoot a web · Triple-click the name for Spider-Sense</span>
+    <button type="button" id="webTipClose" aria-label="Dismiss tip">&times;</button>
+  </div>
+  <button type="button" class="fx-audio-toggle" id="audioToggle" aria-pressed="false" title="Toggle web sound">
+    <i class="bi bi-volume-mute"></i>
+  </button>
 
   <button type="button" class="mobile-nav-toggle d-lg-none" aria-label="Open navigation">
     <i class="bi bi-list"></i>
@@ -52,9 +65,9 @@
     <div class="hero-vignette" aria-hidden="true"></div>
     <div class="hero-grain" aria-hidden="true"></div>
 
-    <div class="container hero-content" data-aos="fade-up" data-aos-duration="1200">
+    <div class="container hero-content">
       <p class="hero-eyebrow">Code &amp; Cuts</p>
-      <h1 class="hero-name">E. Aryan Goud</h1>
+      <h1 class="hero-name" id="heroName" title="Triple-click me">Aryan Goud</h1>
       <p class="hero-typed-line">
         <span class="typed" data-typed-items="Video Editor, ISE Student &amp; Web Builder, Django Developer, Storyteller in Frames"></span>
       </p>
@@ -69,7 +82,7 @@
         <a href="https://www.instagram.com/__.arnx_/" class="instagram" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
           <i class="bx bxl-instagram"></i>
         </a>
-        <a href="https://www.linkedin.com/in/" class="linkedin" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <a href="https://www.linkedin.com/in/earyangoud" class="linkedin" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
           <i class="bx bxl-linkedin"></i>
         </a>
         <a href="mailto:e.aryangoud22@gmail.com" class="email-link" aria-label="Email">
@@ -109,6 +122,17 @@
             </div>
           </div>
         </div>
+
+        <div class="missions" data-aos="fade-up" data-aos-delay="150">
+          <h3 class="missions-title">Missions Unlocked</h3>
+          <div class="mission-badges" id="missionBadges">
+            <span class="mission-badge" data-mission="arrive">New Arrival</span>
+            <span class="mission-badge locked" data-mission="sense">Spider-Sense</span>
+            <span class="mission-badge locked" data-mission="thwip">Web Shooter</span>
+            <span class="mission-badge locked" data-mission="reels">Reel Scout</span>
+            <span class="mission-badge locked" data-mission="secret">Secret Swing</span>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -121,13 +145,23 @@
 
         <div class="row align-items-center g-5">
           <div class="col-lg-4" data-aos="fade-right" data-aos-delay="100">
-            <div class="about-avatar">
+            <div class="about-avatar identity-flip" id="identityFlip" role="button" tabindex="0" aria-label="Flip dual identity">
               <div class="avatar-ring"></div>
-              <div class="avatar-monogram" aria-hidden="true">AG</div>
-              <img src="assets/img/profile-img.jpg" alt="E. Aryan Goud" class="avatar-photo" onerror="this.style.display='none'">
+              <div class="flip-inner">
+                <div class="flip-face flip-front">
+                  <div class="avatar-monogram" aria-hidden="true">AG</div>
+                  <img src="assets/img/profile.webp" alt="E. Aryan Goud" class="avatar-photo">
+                  <span class="flip-label">Code</span>
+                </div>
+                <div class="flip-face flip-back">
+                  <div class="avatar-monogram cuts" aria-hidden="true">CUTS</div>
+                  <span class="flip-label">Editor Mode</span>
+                </div>
+              </div>
+              <p class="flip-hint">Tap to flip identity</p>
             </div>
           </div>
-          <div class="col-lg-8" data-aos="fade-left" data-aos-delay="200">
+          <div class="col-lg-8 pt-5 pt-lg-0" data-aos="fade-left" data-aos-delay="200">
             <h3 class="about-heading">Builder &amp; Editor</h3>
             <p>
               I’m E. Aryan Goud, a B.E. Information Science student at The National Institute of Engineering, Mysore.
@@ -478,7 +512,7 @@
       <p class="footer-tag">Code &amp; Cuts · Built with curiosity</p>
       <div class="social-links">
         <a href="https://www.instagram.com/__.arnx_/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="bx bxl-instagram"></i></a>
-        <a href="https://www.linkedin.com/in/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="bx bxl-linkedin"></i></a>
+        <a href="https://www.linkedin.com/in/earyangoud" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="bx bxl-linkedin"></i></a>
         <a href="mailto:e.aryangoud22@gmail.com" aria-label="Email"><i class="bx bx-envelope"></i></a>
       </div>
       <p class="copyright">&copy; <span id="year"></span> E. Aryan Goud. All rights reserved.</p>

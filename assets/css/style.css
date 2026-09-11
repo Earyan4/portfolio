@@ -478,16 +478,6 @@ html[data-theme="dark"] .decor-web {
   align-items: flex-end;
   min-height: 280px;
   align-self: stretch;
-  isolation: isolate;
-}
-
-.hero-figure::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  pointer-events: none;
-  background: linear-gradient(to top, var(--bg) 0%, transparent 28%);
 }
 
 .hero-portrait {
@@ -512,12 +502,6 @@ html[data-theme="dark"] .hero-portrait {
     justify-content: flex-end;
     min-height: min(78vh, 720px);
     padding-right: clamp(2.5rem, 7vw, 6rem);
-  }
-
-  .hero-figure::after {
-    background:
-      linear-gradient(to right, var(--bg) 0%, transparent 32%),
-      linear-gradient(to top, var(--bg) 0%, transparent 22%);
   }
 
   .hero-portrait {
